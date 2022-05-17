@@ -1,5 +1,5 @@
 - Sơ đồ thực thể
-https://drive.google.com/file/d/18aa0tZXwmRqmui60quay32ZPBMeJrQB7/view?usp=sharing
+https://app.diagrams.net/#G15UIsGywpUJzdl5w68LsRMb9pFBy_OoWn
 
 # Đồ án: Quản lý lịch hẹn tư vấn chăm sóc sức khỏe
 
