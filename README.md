@@ -20,8 +20,6 @@ B. Bác sĩ
 - Cập nhật trạng thái làm việc ( rảnh, bận, vắng )
 
 C. Nhân viên
-- Tiếp nhận yêu cầu của khách hàng
-- Tư vấn cho khách hàng
 - Sắp xếp lịch hẹn đến các bác sĩ
 
 D. Khách hàng
