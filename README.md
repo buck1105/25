@@ -13,10 +13,12 @@ https://app.diagrams.net/#G15UIsGywpUJzdl5w68LsRMb9pFBy_OoWn
 A. Quản trị viên
 - Quản lý trang thông tin
 - Quản lý người dùng
+- Quản lý bác sĩ
 - Quản lý lịch hẹn
 
 B. Bác sĩ
 - Nhận | Hủy lịch hẹn
+- Cập nhật lịch làm việc
 - Cập nhật trạng thái làm việc ( rảnh, bận, vắng )
 
 C. Nhân viên
