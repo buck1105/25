@@ -14,18 +14,17 @@ A. Quản trị viên
 - Quản lý trang thông tin
 - Quản lý người dùng
 - Quản lý bác sĩ
-- Quản lý lịch hẹn
 
 B. Bác sĩ
 - Nhận | Hủy lịch hẹn
 - Cập nhật lịch làm việc
-- Cập nhật trạng thái làm việc ( rảnh, bận, vắng )
 
 C. Nhân viên
+- Quản lý lịch hẹn
 - Sắp xếp lịch hẹn đến các bác sĩ
 
 D. Khách hàng
-- Tìm kiếm bác sĩ ( chuyên môn, trạng thái làm việc )
+- Tìm kiếm bác sĩ ( chuyên khoa, trạng thái làm việc )
 - Đặt lịch hẹn
 
 ### Phân tích chức năng
