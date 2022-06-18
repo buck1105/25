@@ -27,13 +27,5 @@ D. Khách hàng
 - Tìm kiếm bác sĩ ( chuyên khoa, trạng thái làm việc )
 - Đặt lịch hẹn
 
-### Phân tích chức năng
-
-| Các tác nhân | Khách hàng |
-| ------ | ------ |
-| Mô tả | Đặt lịch hẹn |
-| Kích hoạt | Người dùng ấn vào nút “Đặt lịch” trên thanh menu |
-| Đầu vào | Thông tin của khách hàng <br> Cần yêu cầu gì |
-| Trình tự xử lý |  |
-| Đầu ra |  |
-| Lưu ý |  |
+// mô phỏng giao diện
+![1 - form dky tu van cham soc suc khoe](https://user-images.githubusercontent.com/93904302/174425610-e12c7340-ffdc-45fa-93c0-e70970d4a056.png)
