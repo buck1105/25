@@ -26,6 +26,3 @@ C. Nhân viên
 D. Khách hàng
 - Tìm kiếm bác sĩ ( chuyên khoa, trạng thái làm việc )
 - Đặt lịch hẹn
-
-// mô phỏng giao diện
-![1 - form dky tu van cham soc suc khoe](https://user-images.githubusercontent.com/93904302/174425610-e12c7340-ffdc-45fa-93c0-e70970d4a056.png)
