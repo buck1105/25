@@ -26,14 +26,3 @@ C. Nhân viên
 D. Khách hàng
 - Tìm kiếm bác sĩ ( chuyên khoa, trạng thái làm việc )
 - Đặt lịch hẹn
-
-### Phân tích chức năng
-
-| Các tác nhân | Khách hàng |
-| ------ | ------ |
-| Mô tả | Đặt lịch hẹn |
-| Kích hoạt | Người dùng ấn vào nút “Đặt lịch” trên thanh menu |
-| Đầu vào | Thông tin của khách hàng <br> Cần yêu cầu gì |
-| Trình tự xử lý |  |
-| Đầu ra |  |
-| Lưu ý |  |
