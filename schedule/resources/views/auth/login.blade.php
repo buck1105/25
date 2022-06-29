@@ -65,14 +65,14 @@
                                 <div class="card-content">
                                     <div class="form-group">
                                         <label>Email address</label>
-                                        <input type="email" placeholder="Enter email" class="form-control input-no-border">
+                                        <input type="email" name="email" placeholder="Enter email" class="form-control input-no-border">
                                         @error('email')
                                         {{$message}}
                                         @enderror
                                     </div>
                                     <div class="form-group">
                                         <label>Password</label>
-                                        <input type="password" placeholder="Password" class="form-control input-no-border">
+                                        <input type="password" name="password" placeholder="Password" class="form-control input-no-border">
                                         @error('password')
                                         {{$message}}
                                         @enderror

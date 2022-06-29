@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Auth;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Auth\LoginRule;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class AuthController extends Controller
 {
@@ -17,7 +18,10 @@ class AuthController extends Controller
     }
 
     public function processLogin(LoginRule $request) {
-        dd($request->all());
-//        return redirect()->route('admin.dashboard');
+       if (Auth::guard('admin')->attempt(['email'=>$request->email, 'password' => $request->password])){
+        return redirect()->route('admin.dashboard');
+       }
+       return back()->withErrors('msg', 'Tên tài khoản hoặc mật khẩu không chính xác')->withInput();
+
     }
 }
