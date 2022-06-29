@@ -47,50 +47,40 @@
         </div>
         <ul class="nav">
             <li class="active">
-                <a href="#dashboardOverview" aria-expanded="true">
+                <a href="{{route('admin.dashboard')}}" aria-expanded="true">
                     <i class="ti-panel"></i>
                     <p>Dashboard
                     </p>
                 </a>
             </li>
             <li>
-                <a href="{{route('admin.doctor')}}">
+                <a href="{{route('admin.specialist.index')}}" aria-expanded="true">
+                    <i class="ti-panel"></i>
+                    <p>Specialist
+                    </p>
+                </a>
+            </li>
+            <li>
+                <a href="{{route('admin.doctor.index')}}">
                     <i class="ti-package"></i>
                     <p>Doctor
                     </p>
                 </a>
             </li>
             <li>
-                <a href="#">
+                <a href="{{route('admin.calender.index')}}">
                     <i class="ti-calendar"></i>
                     <p>Calendar</p>
                 </a>
             </li>
             <li>
-                <a  href="#mapsExamples">
+                <a  href="{{route('admin.user.index')}}">
                     <i class="ti-map"></i>
                     <p>
-                        Maps
+                       Customer
                     </p>
                 </a>
-                <div class="collapse" id="mapsExamples">
-                    <ul class="nav">
-                        <li>
-                            <a href="#">
-                                <span class="sidebar-mini">GM</span>
-                                <span class="sidebar-normal">Google Maps</span>
-                            </a>
-                        </li>
-                    </ul>
-                </div>
             </li>
-            <li>
-                <a href="#">
-                    <i class="ti-bar-chart-alt"></i>
-                    <p>Charts</p>
-                </a>
-            </li>
-
         </ul>
     </div>
 </div>

@@ -34,8 +34,9 @@
                                             <li><label><input type="checkbox" data-field="city" value="5"
                                                               checked="checked"> City</label></li>
                                             li><label><input type="checkbox" data-field="gender" value="6"
-                                                             checked="checked"> Actions</label></li> li><label><input type="checkbox" data-field="nationality" value="7"
-                                                             checked="checked"> Actions</label></li>
+                                                             checked="checked"> Actions</label></li> li><label><input
+                                                    type="checkbox" data-field="nationality" value="7"
+                                                    checked="checked"> Actions</label></li>
                                             <li><label><input type="checkbox" data-field="actions" value="8"
                                                               checked="checked"> Actions</label></li>
                                         </ul>
@@ -66,7 +67,7 @@
                                                 <div class="fht-cell"></div>
                                             </th>
                                             <th style="" data-field="salary">
-                                                <div class="th-inner sortable both">Chức vụ</div>
+                                                <div class="th-inner sortable both">Mật khẩu</div>
                                                 <div class="fht-cell"></div>
                                             </th>
                                             <th style="" data-field="country">
@@ -77,10 +78,11 @@
                                                 <div class="th-inner ">Ngày sinh</div>
                                                 <div class="fht-cell"></div>
                                             </th>
-                                            <th  style="" data-field="gender">
+                                            <th style="" data-field="gender">
                                                 <div class="th-inner ">Giới tính</div>
                                                 <div class="fht-cell"></div>
-                                            </th>  <th  style="" data-field="nationality">
+                                            </th>
+                                            <th style="" data-field="nationality">
                                                 <div class="th-inner ">Địa chỉ</div>
                                                 <div class="fht-cell"></div>
                                             </th>
@@ -96,40 +98,36 @@
                                         ?>
                                         @foreach($data as $each)
                                             <?php $count++; ?>
-                                        <tr data-index="{{$count}}">
-                                            <td class="bs-checkbox"><input data-index="0" name="btSelectItem"
-                                                                           type="checkbox"></td>
-                                            <td class="text-center" style="">1</td>
-                                            <td style="">{{$each->name}}</td>
-                                            @if($each->role == 1)
-                                            <td style="">Bác sĩ</td>
-                                            @elseif($each->role == 2)
-                                            <td style="">Y tá</td>
-                                            @endif
-                                            <td style="">{{$each->email}}</td>
-                                            <td style="">{{$each->birthdate}}</td>
-                                            @if($each->gender == 0)
-                                                <td style="">Nam</td>
-                                            @elseif($each->gender == 1)
-                                                <td style="">Nữ</td>
-                                            @endif
-                                            <td style="">{{$each->address}}</td>
-                                            <td class="td-actions text-right" style="">
-                                                <div class="table-icons"><a rel="tooltip" title=""
-                                                                            class="btn btn-simple btn-info btn-icon table-action view"
-                                                                            href="javascript:void(0)"
-                                                                            data-original-title="View"><i
-                                                            class="ti-image"></i></a><a rel="tooltip" title=""
-                                                                                        class="btn btn-simple btn-warning btn-icon table-action edit"
-                                                                                        href="javascript:void(0)"
-                                                                                        data-original-title="Edit"><i
-                                                            class="ti-pencil-alt"></i></a><a rel="tooltip" title=""
-                                                                                             class="btn btn-simple btn-danger btn-icon table-action remove"
-                                                                                             href="javascript:void(0)"
-                                                                                             data-original-title="Remove"><i
-                                                            class="ti-close"></i></a></div>
-                                            </td>
-                                        </tr>
+                                            <tr data-index="{{$count}}">
+                                                <td class="bs-checkbox"><input data-index="0" name="btSelectItem"
+                                                                               type="checkbox"></td>
+                                                <td class="text-center" style="">1</td>
+                                                <td style="">{{$each->name}}</td>
+                                                <td style="">{{$each->password}}</td>
+                                                <td style="">{{$each->email}}</td>
+                                                <td style="">{{$each->birthdate}}</td>
+                                                @if($each->gender == 0)
+                                                    <td style="">Nam</td>
+                                                @elseif($each->gender == 1)
+                                                    <td style="">Nữ</td>
+                                                @endif
+                                                <td style="">{{$each->address}}</td>
+                                                <td class="td-actions text-right" style="">
+                                                    <div class="table-icons"><a rel="tooltip" title=""
+                                                                                class="btn btn-simple btn-info btn-icon table-action view"
+                                                                                href="javascript:void(0)"
+                                                                                data-original-title="View"><i
+                                                                class="ti-image"></i></a><a rel="tooltip" title=""
+                                                                                            class="btn btn-simple btn-warning btn-icon table-action edit"
+                                                                                            href="javascript:void(0)"
+                                                                                            data-original-title="Edit"><i
+                                                                class="ti-pencil-alt"></i></a><a rel="tooltip" title=""
+                                                                                                 class="btn btn-simple btn-danger btn-icon table-action remove"
+                                                                                                 href="javascript:void(0)"
+                                                                                                 data-original-title="Remove"><i
+                                                                class="ti-close"></i></a></div>
+                                                </td>
+                                            </tr>
                                         @endforeach
 
                                         </tbody>
@@ -177,3 +175,4 @@
         </div> <!-- end row -->
     </div>
 @endsection
+

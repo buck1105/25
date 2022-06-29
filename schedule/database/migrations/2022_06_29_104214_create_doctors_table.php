@@ -19,8 +19,10 @@ class CreateDoctorsTable extends Migration
             $table->string('name');
             $table->string('email');
             $table->string('password');
+            $table->string('avatar')->nullable();
             $table->string('phone')->nullable();
             $table->date('birthdate')->nullable();
+            $table->boolean('gender')->nullable();
             $table->text('address')->nullable();
             $table->smallInteger('role')->default(1);
             $table->timestamps();
