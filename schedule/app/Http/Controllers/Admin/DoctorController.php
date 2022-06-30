@@ -9,7 +9,7 @@ use Illuminate\Http\Request;
 class DoctorController extends Controller
 {
     public function index() {
-        $data = Doctor::query()->get();
+        $data = Doctor::query()->paginate(8);
         return view('admin.doctor.index', compact('data'));
     }
 }

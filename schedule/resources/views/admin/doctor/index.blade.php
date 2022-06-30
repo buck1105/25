@@ -34,8 +34,9 @@
                                             <li><label><input type="checkbox" data-field="city" value="5"
                                                               checked="checked"> City</label></li>
                                             li><label><input type="checkbox" data-field="gender" value="6"
-                                                             checked="checked"> Actions</label></li> li><label><input type="checkbox" data-field="nationality" value="7"
-                                                             checked="checked"> Actions</label></li>
+                                                             checked="checked"> Actions</label></li> li><label><input
+                                                    type="checkbox" data-field="nationality" value="7"
+                                                    checked="checked"> Actions</label></li>
                                             <li><label><input type="checkbox" data-field="actions" value="8"
                                                               checked="checked"> Actions</label></li>
                                         </ul>
@@ -77,10 +78,11 @@
                                                 <div class="th-inner ">Ngày sinh</div>
                                                 <div class="fht-cell"></div>
                                             </th>
-                                            <th  style="" data-field="gender">
+                                            <th style="" data-field="gender">
                                                 <div class="th-inner ">Giới tính</div>
                                                 <div class="fht-cell"></div>
-                                            </th>  <th  style="" data-field="nationality">
+                                            </th>
+                                            <th style="" data-field="nationality">
                                                 <div class="th-inner ">Địa chỉ</div>
                                                 <div class="fht-cell"></div>
                                             </th>
@@ -92,44 +94,44 @@
                                         </thead>
                                         <tbody>
                                         <?php
-                                        $count = 0;
+                                        $count = -1;
                                         ?>
                                         @foreach($data as $each)
                                             <?php $count++; ?>
-                                        <tr data-index="{{$count}}">
-                                            <td class="bs-checkbox"><input data-index="0" name="btSelectItem"
-                                                                           type="checkbox"></td>
-                                            <td class="text-center" style="">1</td>
-                                            <td style="">{{$each->name}}</td>
-                                            @if($each->role == 1)
-                                            <td style="">Bác sĩ</td>
-                                            @elseif($each->role == 2)
-                                            <td style="">Y tá</td>
-                                            @endif
-                                            <td style="">{{$each->email}}</td>
-                                            <td style="">{{$each->birthdate}}</td>
-                                            @if($each->gender == 0)
-                                                <td style="">Nam</td>
-                                            @elseif($each->gender == 1)
-                                                <td style="">Nữ</td>
-                                            @endif
-                                            <td style="">{{$each->address}}</td>
-                                            <td class="td-actions text-right" style="">
-                                                <div class="table-icons"><a rel="tooltip" title=""
-                                                                            class="btn btn-simple btn-info btn-icon table-action view"
-                                                                            href="javascript:void(0)"
-                                                                            data-original-title="View"><i
-                                                            class="ti-image"></i></a><a rel="tooltip" title=""
-                                                                                        class="btn btn-simple btn-warning btn-icon table-action edit"
-                                                                                        href="javascript:void(0)"
-                                                                                        data-original-title="Edit"><i
-                                                            class="ti-pencil-alt"></i></a><a rel="tooltip" title=""
-                                                                                             class="btn btn-simple btn-danger btn-icon table-action remove"
-                                                                                             href="javascript:void(0)"
-                                                                                             data-original-title="Remove"><i
-                                                            class="ti-close"></i></a></div>
-                                            </td>
-                                        </tr>
+                                            <tr data-index="{{$count}}">
+                                                <td class="bs-checkbox"><input data-index="0" name="btSelectItem"
+                                                                               type="checkbox"></td>
+                                                <td class="text-center" style="">{{$each->id}}</td>
+                                                <td style="">{{$each->name}}</td>
+                                                @if($each->role == 1)
+                                                    <td style="">Bác sĩ</td>
+                                                @elseif($each->role == 2)
+                                                    <td style="">Y tá</td>
+                                                @endif
+                                                <td style="">{{$each->email}}</td>
+                                                <td style="">{{$each->birthdate}}</td>
+                                                @if($each->gender == 0)
+                                                    <td style="">Nam</td>
+                                                @elseif($each->gender == 1)
+                                                    <td style="">Nữ</td>
+                                                @endif
+                                                <td style="">{{$each->address}}</td>
+                                                <td class="td-actions text-right" style="">
+                                                    <div class="table-icons"><a rel="tooltip" title=""
+                                                                                class="btn btn-simple btn-info btn-icon table-action view"
+                                                                                href="javascript:void(0)"
+                                                                                data-original-title="View"><i
+                                                                class="ti-image"></i></a><a rel="tooltip" title=""
+                                                                                            class="btn btn-simple btn-warning btn-icon table-action edit"
+                                                                                            href="javascript:void(0)"
+                                                                                            data-original-title="Edit"><i
+                                                                class="ti-pencil-alt"></i></a><a rel="tooltip" title=""
+                                                                                                 class="btn btn-simple btn-danger btn-icon table-action remove"
+                                                                                                 href="javascript:void(0)"
+                                                                                                 data-original-title="Remove"><i
+                                                                class="ti-close"></i></a></div>
+                                                </td>
+                                            </tr>
                                         @endforeach
 
                                         </tbody>
@@ -143,28 +145,36 @@
                                     </table>
                                 </div>
                                 <div class="fixed-table-pagination">
-                                    <div class="pull-left pagination-detail"><span class="pagination-info"></span><span
-                                            class="page-list"><span class="btn-group dropup"><button type="button"
-                                                                                                     class="btn btn-default  dropdown-toggle"
-                                                                                                     data-toggle="dropdown"><span
-                                                        class="page-size">8</span> <span class="caret"></span></button><ul
-                                                    class="dropdown-menu" role="menu"><li class="active"><a
+                                    <div class="pull-left pagination-detail">
+                                        <span class="pagination-info"></span>
+                                        <span
+                                            class="page-list">
+                                            <span class="btn-group dropup">
+                                                <button type="button"
+                                                        class="btn btn-default  dropdown-toggle"
+                                                        data-toggle="dropdown">
+                                                    <span class="page-size">8</span> <span class="caret"></span>
+                                                </button>
+                                                <ul class="dropdown-menu" role="menu">
+                                                    <li class="active"><a
                                                             href="javascript:void(0)">8</a></li><li><a
                                                             href="javascript:void(0)">10</a></li><li><a
-                                                            href="javascript:void(0)">25</a></li></ul></span> rows visible</span>
+                                                            href="javascript:void(0)">25</a></li>
+                                                </ul></span> rows visible</span>
                                     </div>
                                     <div class="pull-right pagination">
                                         <ul class="pagination">
-                                            <li class="page-first disabled"><a href="javascript:void(0)"><i
-                                                        class="fa fa-angle-double-left" aria-hidden="true"></i></a></li>
-                                            <li class="page-pre disabled"><a href="javascript:void(0)">‹</a></li>
-                                            <li class="page-number active"><a href="javascript:void(0)">1</a></li>
-                                            <li class="page-number"><a href="javascript:void(0)">2</a></li>
-                                            <li class="page-number"><a href="javascript:void(0)">3</a></li>
-                                            <li class="page-next"><a href="javascript:void(0)">›</a></li>
-                                            <li class="page-last"><a href="javascript:void(0)"><i
-                                                        class="fa fa-angle-double-right" aria-hidden="true"></i></a>
-                                            </li>
+{{--                                            <li class="page-first disabled"><a href="javascript:void(0)"><i--}}
+{{--                                                        class="fa fa-angle-double-left" aria-hidden="true"></i></a></li>--}}
+{{--                                            <li class="page-pre disabled"><a href="javascript:void(0)">‹</a></li>--}}
+{{--                                            <li class="page-number active"><a href="javascript:void(0)">1</a></li>--}}
+{{--                                            <li class="page-number"><a href="javascript:void(0)">2</a></li>--}}
+{{--                                            <li class="page-number"><a href="javascript:void(0)">3</a></li>--}}
+{{--                                            <li class="page-next"><a href="javascript:void(0)">›</a></li>--}}
+{{--                                            <li class="page-last"><a href="javascript:void(0)"><i--}}
+{{--                                                        class="fa fa-angle-double-right" aria-hidden="true"></i></a>--}}
+{{--                                            </li>--}}
+                                            {{$data->links()}}
                                         </ul>
                                     </div>
                                 </div>

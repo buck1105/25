@@ -56,6 +56,11 @@
             <div class="container">
                 <div class="row">
                     <div class="col-md-4 col-sm-6 col-md-offset-4 col-sm-offset-3">
+                       @if(session()->has('msg'))
+                            <div class="alert alert-danger" role="alert">
+                                <strong>{{session()->get('msg')}}</strong>
+                            </div>
+                        @endif
                         <form action="{{route('process.login')}}" method="post">
                             @csrf
                             <div class="card" data-background="color" data-color="blue">

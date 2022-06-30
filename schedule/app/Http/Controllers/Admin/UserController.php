@@ -9,7 +9,7 @@ use Illuminate\Http\Request;
 class UserController extends Controller
 {
     public function index() {
-        $data = User::query()->get();
+        $data = User::query()->paginate(8);
         return view('admin.user.index', compact('data'));
     }
 }

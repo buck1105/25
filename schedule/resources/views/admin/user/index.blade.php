@@ -94,14 +94,14 @@
                                         </thead>
                                         <tbody>
                                         <?php
-                                        $count = 0;
+                                        $count = -1;
                                         ?>
                                         @foreach($data as $each)
                                             <?php $count++; ?>
                                             <tr data-index="{{$count}}">
-                                                <td class="bs-checkbox"><input data-index="0" name="btSelectItem"
+                                                <td class="bs-checkbox"><input data-index="{{$count}}" name="btSelectItem"
                                                                                type="checkbox"></td>
-                                                <td class="text-center" style="">1</td>
+                                                <td class="text-center" style="">{{$each->id}}</td>
                                                 <td style="">{{$each->name}}</td>
                                                 <td style="">{{$each->password}}</td>
                                                 <td style="">{{$each->email}}</td>
@@ -153,16 +153,17 @@
                                     </div>
                                     <div class="pull-right pagination">
                                         <ul class="pagination">
-                                            <li class="page-first disabled"><a href="javascript:void(0)"><i
-                                                        class="fa fa-angle-double-left" aria-hidden="true"></i></a></li>
-                                            <li class="page-pre disabled"><a href="javascript:void(0)">‹</a></li>
-                                            <li class="page-number active"><a href="javascript:void(0)">1</a></li>
-                                            <li class="page-number"><a href="javascript:void(0)">2</a></li>
-                                            <li class="page-number"><a href="javascript:void(0)">3</a></li>
-                                            <li class="page-next"><a href="javascript:void(0)">›</a></li>
-                                            <li class="page-last"><a href="javascript:void(0)"><i
-                                                        class="fa fa-angle-double-right" aria-hidden="true"></i></a>
-                                            </li>
+{{--                                            <li class="page-first disabled"><a href="javascript:void(0)"><i--}}
+{{--                                                        class="fa fa-angle-double-left" aria-hidden="true"></i></a></li>--}}
+{{--                                            <li class="page-pre disabled"><a href="javascript:void(0)">‹</a></li>--}}
+{{--                                            <li class="page-number active"><a href="javascript:void(0)">1</a></li>--}}
+{{--                                            <li class="page-number"><a href="javascript:void(0)">2</a></li>--}}
+{{--                                            <li class="page-number"><a href="javascript:void(0)">3</a></li>--}}
+{{--                                            <li class="page-next"><a href="javascript:void(0)">›</a></li>--}}
+{{--                                            <li class="page-last"><a href="javascript:void(0)"><i--}}
+{{--                                                        class="fa fa-angle-double-right" aria-hidden="true"></i></a>--}}
+{{--                                            </li>--}}
+                                            {{$data->links()}}
                                         </ul>
                                     </div>
                                 </div>
