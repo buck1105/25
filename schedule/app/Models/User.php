@@ -41,4 +41,13 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+
+    public function getGenderNameAttribute()
+    {
+        if ($this->gender == 0) {
+            return "Nam";
+        }
+        return "Nữ";
+    }
 }

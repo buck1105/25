@@ -55,14 +55,14 @@
             </li>
             <li>
                 <a href="{{route('admin.specialist.index')}}" aria-expanded="true">
-                    <i class="ti-panel"></i>
+                    <i class="ti-view-list"></i>
                     <p>Specialist
                     </p>
                 </a>
             </li>
             <li>
                 <a href="{{route('admin.doctor.index')}}">
-                    <i class="ti-package"></i>
+                    <i class="ti-heart-broken"></i>
                     <p>Doctor
                     </p>
                 </a>
@@ -75,7 +75,7 @@
             </li>
             <li>
                 <a  href="{{route('admin.user.index')}}">
-                    <i class="ti-map"></i>
+                    <i class="ti-user"></i>
                     <p>
                        Customer
                     </p>
