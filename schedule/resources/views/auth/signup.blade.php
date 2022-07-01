@@ -8,7 +8,7 @@
     <title>Paper Dashboard PRO by Creative Tim</title>
     <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />
     <meta name="viewport" content="width=device-width" />
-    <   <!-- Bootstrap core CSS     -->
+{{--    <   <!-- Bootstrap core CSS     -->--}}
     <link href="{{asset('assets/css/bootstrap.min.css')}}" rel="stylesheet" />
 <!--  Paper Dashboard core CSS{{asset('')}}    -->
     <link href="{{asset('assets/css/paper-dashboard.css')}}" rel="stylesheet"/>
@@ -92,26 +92,33 @@
                         </div>
                     </div>
                     <div class="col-md-4">
-                        <form method="#" action="#">
+                        <form action="{{route('process.register')}}" method="post" >
+                            @csrf
                             <div class="card card-plain">
                                 <div class="content">
                                     <div class="form-group">
-                                        <input type="email" placeholder="Your First Name" class="form-control">
+                                        <input type="text" name="name" placeholder="Your Name" class="form-control">
+                                        @error('name')
+                                        {{$message}}
+                                        @enderror
                                     </div>
                                     <div class="form-group">
-                                        <input type="email" placeholder="Your Last Name" class="form-control">
+                                        <input type="email" name="email" placeholder="Email" class="form-control">
+                                        @error('email')
+                                        {{$message}}
+                                        @enderror
                                     </div>
                                     <div class="form-group">
-                                        <input type="email" placeholder="Company" class="form-control">
+                                        <input type="password" name="password" placeholder="Password" class="form-control">
+                                        @error('password')
+                                        {{$message}}
+                                        @enderror
                                     </div>
                                     <div class="form-group">
-                                        <input type="email" placeholder="Enter email" class="form-control">
-                                    </div>
-                                    <div class="form-group">
-                                        <input type="password" placeholder="Password" class="form-control">
-                                    </div>
-                                    <div class="form-group">
-                                        <input type="password" placeholder="Password Confirmation" class="form-control">
+                                        <input type="password" name="password_confirmation" placeholder="Password Confirmation" class="form-control">
+                                        @error('password_confirmation')
+                                        {{$message}}
+                                        @enderror
                                     </div>
                                 </div>
                                 <div class="footer text-center">

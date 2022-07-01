@@ -15,12 +15,17 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('layouts.master');
+    return view('client.index');
 });
 
 Route::get('login', [AuthController::class, 'login'])->name('login');
 Route::post('login', [AuthController::class, 'processLogin'])->name('process.login');
 Route::get('register', [AuthController::class, 'register'])->name('register');
+Route::post('register', [AuthController::class, 'processRegister'])->name('process.register');
+Route::get('ngonngu/{lang?}', function ($lang) {
+    config(['app.locale' => $lang]);
+    return view('test');
+});
 
 
 

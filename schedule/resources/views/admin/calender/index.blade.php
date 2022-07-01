@@ -541,4 +541,13 @@
             </div>
         </div>
     </div>
-@endsection()
+@endsection
+@push('js')
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            demo.initFullCalendar();
+        });
+    </script>
+
+@endpush
