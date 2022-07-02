@@ -10,6 +10,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Session;
 
 class AuthController extends Controller
 {
@@ -27,12 +28,16 @@ class AuthController extends Controller
     {
 
         try {
-            if (Auth::guard('web')->attempt(['email' => $request->email, 'password' => $request->password])) {
-                session()->put(['name' => $request->name]);
+            if (Auth::guard('web')->attempt(['email' => $request->email, 'password' => $request->password, 'role' => 0])) {
+                $user = User::query()->where('email', $request->email)->sole();
+                Session::put('name', $user->name);
+                Session::put('email', $user->email);
+                Session::put('avatar', $user->avatar);
                 return redirect()->route('admin.dashboard');
             }
         } catch (\Exception $e) {
-            return back()->withErrors('msg', 'Tên tài khoản hoặc mật khẩu không chính xác')->withInput();
+//            return back()->withErrors('msg', 'Tên tài khoản hoặc mật khẩu không chính xác')->withInput();
+            return back()->with('msg', 'Tên tài khoản hoặc mật khẩu không chính xác');
         }
 
 
@@ -40,19 +45,27 @@ class AuthController extends Controller
 
     public function processRegister(RegisterRule $request)
     {
+//        DB::beginTransaction();
         try {
-            DB::beginTransaction();
-            $doctor = new User();
-            $doctor->name = $request->name;
-            $doctor->email = $request->email;
-            $doctor->password = Hash::make($request->password);
-            $doctor->save();
-            DB::commit();
+            $user = new User();
+            $user->name = $request->name;
+            $user->email = $request->email;
+            $user->password = Hash::make($request->password);
+            $user->save();
+//            DB::commit();
             return redirect()->route('login');
         } catch (\Exception $e) {
-            DB::rollBack();
-            return back()->withErrors('msg', 'Tên tài khoản hoặc mật khẩu không đã tồn tại')->withInput();
+//            DB::rollBack();
+//            return back()->withErrors('msg', 'Tên tài khoản hoặc mật khẩu không đã tồn tại')->withInput();
+            return back()->with('msg', 'Tên tài khoản hoặc mật khẩu không đã tồn tại')->withInput();
         }
 
+    }
+
+    public function logout()
+    {
+        session()->flush();
+        Auth::logout();
+        return redirect()->route('login');
     }
 }

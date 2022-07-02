@@ -12,10 +12,13 @@
             <div class="info">
                 <div class="photo">
                     <img src="{{asset('assets/img/faces/face-2.jpg')}}" />
+{{--                    <img src="{{session()->get('avatar')}}" />--}}
                 </div>
                 <a data-toggle="collapse" href="#collapseExample" class="collapsed">
 	                        <span>
-								Admin
+								@if(session()->has('name'))
+                                    {{session()->get('name')}}
+                                @endif
 		                        <b class="caret"></b>
 							</span>
                 </a>
@@ -24,21 +27,18 @@
                 <div class="collapse" id="collapseExample">
                     <ul class="nav">
                         <li>
-                            <a href="#profile">
-                                <span class="sidebar-mini">Mp</span>
-                                <span class="sidebar-normal">My Profile</span>
+                            <a href="">
+                                <span class="sidebar-normal">Profile</span>
                             </a>
                         </li>
+{{--                        <li>--}}
+{{--                            <a href="">--}}
+{{--                                <span class="sidebar-normal">Đăng xuất</span>--}}
+{{--                            </a>--}}
+{{--                        </li>--}}
                         <li>
-                            <a href="#edit">
-                                <span class="sidebar-mini">Ep</span>
-                                <span class="sidebar-normal">Edit Profile</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#settings">
-                                <span class="sidebar-mini">S</span>
-                                <span class="sidebar-normal">Settings</span>
+                            <a href="{{route('admin.logout')}}">
+                                <span class="sidebar-normal">Đăng xuất</span>
                             </a>
                         </li>
                     </ul>

@@ -27,7 +27,6 @@ class UserSeeder extends Seeder
                 'password' => $faker->password,
                 'avatar' => $faker->imageUrl(),
                 'phone' => "0". $faker->phoneNumber(9),
-//                'position' => $faker->jobTitle,
                 'birthdate' => $faker->date('Y-m-d', Carbon::now()),
                 'gender' => $faker->boolean,
                 'address' => $faker->address,
