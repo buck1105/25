@@ -23,7 +23,8 @@ Route::post('login', [AuthController::class, 'processLogin'])->name('process.log
 Route::get('register', [AuthController::class, 'register'])->name('register');
 Route::post('register', [AuthController::class, 'processRegister'])->name('process.register');
 Route::get('ngonngu/{lang?}', function ($lang) {
-    config(['app.locale' => $lang]);
+//    config(['app.locale' => $lang]);
+    App::setLocale($lang);
     return view('test');
 });
 

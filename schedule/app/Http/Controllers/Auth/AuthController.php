@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Auth;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Auth\LoginRule;
 use App\Http\Requests\Auth\RegisterRule;
-use App\Models\Doctor;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
@@ -25,23 +25,12 @@ class AuthController extends Controller
 
     public function processLogin(LoginRule $request)
     {
-//        dd(Auth::guard('admin')->attempt(['email' => $request->email, 'password' => $request->password]));
-//        if (!Auth::guard('admin')->attempt(['email' => $request->email, 'password' => $request->password])) {
-//            session()->put(['email' => $request->email]);
-//            Auth::login();
-//            return redirect()->route('admin.dashboard');
-//        }
-        try {
-            $doctors = Doctor::query()
-                ->where('email', $request->input('email'))
-                ->firstOrFail();
 
-            if (!Hash::check($request->input('password'), $doctors->password)) {
-                throw new Exception('Invalid password');
+        try {
+            if (Auth::guard('web')->attempt(['email' => $request->email, 'password' => $request->password])) {
+                session()->put(['name' => $request->name]);
+                return redirect()->route('admin.dashboard');
             }
-            session()->put(['name' => $request->name]);
-//            Auth::guard('admin')->login($doctors);
-            return redirect()->route('admin.dashboard');
         } catch (\Exception $e) {
             return back()->withErrors('msg', 'Tên tài khoản hoặc mật khẩu không chính xác')->withInput();
         }
@@ -53,7 +42,7 @@ class AuthController extends Controller
     {
         try {
             DB::beginTransaction();
-            $doctor = new Doctor();
+            $doctor = new User();
             $doctor->name = $request->name;
             $doctor->email = $request->email;
             $doctor->password = Hash::make($request->password);

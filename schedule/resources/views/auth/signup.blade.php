@@ -92,7 +92,7 @@
                         </div>
                     </div>
                     <div class="col-md-4">
-                        <form action="{{route('process.register')}}" method="post" >
+                        <form action="{{route('process.register')}}" method="post">
                             @csrf
                             <div class="card card-plain">
                                 <div class="content">

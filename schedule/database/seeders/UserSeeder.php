@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Enums\UserRoleEnum;
 use App\Models\Doctor;
 use App\Models\User;
 use Carbon\Carbon;
@@ -30,6 +31,7 @@ class UserSeeder extends Seeder
                 'birthdate' => $faker->date('Y-m-d', Carbon::now()),
                 'gender' => $faker->boolean,
                 'address' => $faker->address,
+                'role' => $faker->randomElement(UserRoleEnum::getValues()),
             ];
             User::insert($arr);
         }
