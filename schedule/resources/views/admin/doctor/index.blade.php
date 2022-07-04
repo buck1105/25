@@ -5,9 +5,8 @@
             <div class="col-md-12">
                 <div class="card">
                     <div class="card-content">
-                        <div class="bootstrap-table">
                             <div class="toolbar">
-                                <!--Here you can write extra buttons/actions for the toolbar-->
+                                <a href="{{route('admin.doctor.create')}}" class="btn btn-primary" style="margin-right: 4px">Thêm</a>
                             </div>
                             <table id="bootstrap-table" class="table">
                                 <thead>
@@ -39,25 +38,15 @@
                                 @endforeach
                                 </tbody>
                             </table>
-                            <div class="fixed-table-pagination">
-                                <div class="pull-left pagination-detail"><span class="pagination-info"></span><span
-                                        class="page-list"><span class="btn-group dropup"><button type="button"
-                                                                                                 class="btn btn-default  dropdown-toggle"
-                                                                                                 data-toggle="dropdown"><span
-                                                    class="page-size">8</span> <span class="caret"></span></button><ul
-                                                class="dropdown-menu" role="menu"><li class="active"><a
-                                                        href="javascript:void(0)">8</a></li><li><a
-                                                        href="javascript:void(0)">10</a></li><li><a
-                                                        href="javascript:void(0)">25</a></li></ul></span> rows visible</span>
-                                </div>
-                                <div class="pull-right pagination">
-                                    <ul class="pagination">
-                                        {{$data->links()}}
-                                    </ul>
-                                </div>
-                            </div>
+{{--                            <div class="fixed-table-pagination">--}}
+
+{{--                                <div class="pull-right pagination">--}}
+{{--                                    <ul class="pagination">--}}
+{{--                                        {{$data->links()}}--}}
+{{--                                    </ul>--}}
+{{--                                </div>--}}
+{{--                            </div>--}}
                         </div>
-                    </div>
                 </div><!--  end card  -->
             </div> <!-- end col-md-12 -->
         </div> <!-- end row -->

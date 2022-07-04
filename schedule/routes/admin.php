@@ -13,6 +13,8 @@ Route::group(['middleware' => 'checklogin'], function () {
 
     Route::group(['prefix' => 'doctor', 'as' => 'doctor.'], function () {
         Route::get('/', [DoctorController::class, 'index'])->name('index');
+        Route::get('create', [DoctorController::class, 'create'])->name('create');
+        Route::post('store', [DoctorController::class, 'store'])->name('store');
     });
 
     Route::group(['prefix' => 'calender', 'as' => 'calender.'], function () {

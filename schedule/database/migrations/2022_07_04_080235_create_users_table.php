@@ -13,18 +13,21 @@ class CreateUsersTable extends Migration
      */
     public function up()
     {
+        Schema::dropIfExists('users');
         Schema::create('users', function (Blueprint $table) {
             $table->id();
+            $table->bigInteger('specialist_id');
             $table->string('name');
             $table->string('email');
-            $table->string('password');
-            $table->string('avatar')->nullable();
+            $table->string('password')->nullable();
+            $table->string('image')->nullable();
             $table->string('phone')->nullable();
             $table->date('birthdate')->nullable();
             $table->boolean('gender')->nullable();
             $table->text('address')->nullable();
             $table->smallInteger('role')->default(3);
             $table->timestamps();
+            $table->foreignId('specialist_id')->constrained()->cascadeOnDelete();
         });
     }
 

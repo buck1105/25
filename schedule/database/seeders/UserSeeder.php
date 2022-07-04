@@ -22,7 +22,7 @@ class UserSeeder extends Seeder
 
         for($i = 1; $i <= 10; $i++){
             $arr[] = [
-                'name'     => $faker->firstName . ' ' . $faker->lastName,
+                'name'     => $faker->name,
                 'email' => $faker->email,
                 'password' => $faker->password,
                 'avatar' => $faker->imageUrl(),
