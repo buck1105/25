@@ -62,10 +62,10 @@
                             </div>
                             <div class="form-group">
                                 <label for="">Mật khẩu </label>
-                                <input type="password" name="password" placeholder="Mật khẩu..." class="form-control">
-                                @error('password')
-                                {{$message}}
-                                @enderror
+                                <input type="hidden" name="password" placeholder="Mật khẩu..." class="form-control">
+{{--                                @error('password')--}}
+{{--                                {{$message}}--}}
+{{--                                @enderror--}}
                             </div>
                             <div class="form-group">
                                 <label for="">Địa chỉ </label>

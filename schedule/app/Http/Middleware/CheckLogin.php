@@ -17,13 +17,10 @@ class CheckLogin
      */
     public function handle(Request $request, Closure $next)
     {
-//        dd(Auth::guard('admin')->check());
-        if (!Auth::guard('web')->check()) {
-            return redirect()->route('login');
-        }
-//        if (session()->has('name')) {
-//            return redirect()->route('admin.dashboard');
+//        if (!Auth::guard('web')->check()) {
+//            return redirect()->route('login');
 //        }
+
         return $next($request);
     }
 }

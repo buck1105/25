@@ -13,10 +13,9 @@ class CreateUsersTable extends Migration
      */
     public function up()
     {
-        Schema::dropIfExists('users');
         Schema::create('users', function (Blueprint $table) {
             $table->id();
-            $table->bigInteger('specialist_id');
+            $table->unsignedInteger('specialist_id');
             $table->string('name');
             $table->string('email');
             $table->string('password')->nullable();
@@ -27,7 +26,7 @@ class CreateUsersTable extends Migration
             $table->text('address')->nullable();
             $table->smallInteger('role')->default(3);
             $table->timestamps();
-            $table->foreignId('specialist_id')->constrained()->cascadeOnDelete();
+//            $table->foreignId('specialist_id')->constrained()->cascadeOnDelete();
         });
     }
 

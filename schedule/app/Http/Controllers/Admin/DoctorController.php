@@ -38,7 +38,6 @@ class DoctorController extends Controller
     {
         try {
             $doctor = $request->validated();
-//            dd($doctor);
             $this->repository->store($doctor);
             return redirect()->route('admin.doctor.index');
         }

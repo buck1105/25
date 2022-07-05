@@ -4,11 +4,12 @@ namespace App\Repositories;
 
 use App\Enums\UserRoleEnum;
 use App\Models\User;
-use App\Repositories\DoctorRepositoryContract as DoctorContract ;
-use phpDocumentor\Reflection\Types\Boolean;
+use App\Traits\ResponseTrait;
+
 
 class DoctorRepository implements DoctorRepositoryContract
 {
+    use ResponseTrait;
     protected $model;
 
     public function __construct(User $model)
@@ -29,12 +30,17 @@ class DoctorRepository implements DoctorRepositoryContract
     public function store($data)
     {
 
-        $data['image']->move(public_path('assets/img'), $data['image']->getClientOriginalName());
-        $data['image'] = (string)$data['image']->getClientOriginalName();
-        $data['gender'] = (bool)$data['gender'];
-        $data['role'] = 1;
-        dd($data);
-        return $this->model->insert($data);
+       try  {
+           if ($data['image']->move(public_path('assets/img'), $data['image']->getClientOriginalName())) {
+               $data['image'] = (string)$data['image']->getClientOriginalName();
+           }
+           $data['role'] = 1;
+           $data['password'] = bcrypt('1234');
+           return $this->model->insert($data);
+       }
+       catch (\Exception $e) {
+           return $this->model->errorResponse();
+       }
     }
 
     public function update($id, $data)
