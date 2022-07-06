@@ -6,10 +6,12 @@ use App\Enums\UserRoleEnum;
 use App\Models\User;
 use App\Traits\ResponseTrait;
 
+//use Illuminate\Support\Facades\Log;
 
 class DoctorRepository implements DoctorRepositoryContract
 {
     use ResponseTrait;
+
     protected $model;
 
     public function __construct(User $model)
@@ -29,18 +31,16 @@ class DoctorRepository implements DoctorRepositoryContract
 
     public function store($data)
     {
-
-       try  {
-           if ($data['image']->move(public_path('assets/img'), $data['image']->getClientOriginalName())) {
-               $data['image'] = (string)$data['image']->getClientOriginalName();
-           }
-           $data['role'] = 1;
-           $data['password'] = bcrypt('1234');
-           return $this->model->insert($data);
-       }
-       catch (\Exception $e) {
-           return $this->model->errorResponse();
-       }
+        try {
+            $image = uniqid() . '_' . trim($data['image']->getClientOriginalName());
+            $data['image']->move(public_path('assets/img'), $image);
+            $data['image'] = $image;
+            $data['role'] = 1;
+            $data['password'] = bcrypt($data['password']);
+            return $this->model->insert($data);
+        } catch (\Exception $e) {
+            return $e->getMessage();
+        }
     }
 
     public function update($id, $data)

@@ -40,9 +40,31 @@ class DoctorController extends Controller
             $doctor = $request->validated();
             $this->repository->store($doctor);
             return redirect()->route('admin.doctor.index');
-        }
-        catch (\Exception $e) {
+        } catch (\Exception $e) {
             return back()->with(['message' => 'ERROR' . $e]);
         }
+    }
+
+    public function edit($id)
+    {
+        $data = $this->repository->find($id);
+        return view('admin.doctor.edit', compact('data'));
+    }
+
+    public function delete($id)
+    {
+        try {
+            $this->repository->destroy($id);
+            return redirect()->route('admin.doctor.index');
+        } catch (\Exception $e) {
+            return $e->getMessage();
+        }
+    }
+
+    public function update(Request $request, $id)
+    {
+        $data = $request->all();
+        $this->repository->update($id, $data);
+        return redirect()->route('admin.doctor.index');
     }
 }

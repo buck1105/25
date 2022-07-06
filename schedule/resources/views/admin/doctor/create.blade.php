@@ -29,6 +29,9 @@
                                 <input type="radio" name="gender" id="" value="0">
                                 <span>Nữ</span>
                                 <input type="radio" name="gender" id="" value="1">
+                                @error('gender')
+                                {{$message}}
+                                @enderror
                             </div>
                             <div class="form-group ">
                                 <label for="">Số điện thoại </label>
@@ -39,11 +42,14 @@
                             </div>
                             <div class="form-group">
                                 <label for="">Chuyên khoa </label>
-                                <select name="role" id="" class="form-control">
+                                <select name="specialist_id" id="" class="form-control">
                                     @foreach($specialist as $key => $value)
                                         <option value="{{$value}}">{{$key}}</option>
-                                    @endforeach()
+                                    @endforeach
                                 </select>
+                                @error('specialist_id')
+                                {{$message}}
+                                @enderror
                             </div>
                             <div class="form-group">
                                 <label for="">Địa chỉ email</label>
@@ -62,10 +68,10 @@
                             </div>
                             <div class="form-group">
                                 <label for="">Mật khẩu </label>
-                                <input type="hidden" name="password" placeholder="Mật khẩu..." class="form-control">
-{{--                                @error('password')--}}
-{{--                                {{$message}}--}}
-{{--                                @enderror--}}
+                                <input type="text"  name="password" class="form-control" value="1234">
+                                @error('password')
+                                {{$message}}
+                                @enderror
                             </div>
                             <div class="form-group">
                                 <label for="">Địa chỉ </label>

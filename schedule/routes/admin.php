@@ -15,6 +15,9 @@ Route::group(['middleware' => 'checklogin'], function () {
         Route::get('/', [DoctorController::class, 'index'])->name('index');
         Route::get('create', [DoctorController::class, 'create'])->name('create');
         Route::post('store', [DoctorController::class, 'store'])->name('store');
+        Route::get('edit/{id}', [DoctorController::class, 'edit'])->name('edit');
+        Route::post('update/{id}', [DoctorController::class, 'update'])->name('update');
+        Route::get('delete/{id}', [DoctorController::class, 'delete'])->name('delete');
     });
 
     Route::group(['prefix' => 'calender', 'as' => 'calender.'], function () {

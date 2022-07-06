@@ -21,6 +21,12 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'phone',
+        'specialist_id',
+        'gender',
+        'image',
+        'birthdate',
+        'address',
     ];
 
     /**
@@ -49,5 +55,16 @@ class User extends Authenticatable
             return "Nam";
         }
         return "Nữ";
+    }
+
+    public function getSpecialistNameAttribute()
+    {
+        if ($this->specialist_id == 0) {
+            return "Đa khoa";
+        }
+        elseif ($this->specialist_id==1){
+            return "Nha khoa";
+        }
+        return "Ung bướu";
     }
 }

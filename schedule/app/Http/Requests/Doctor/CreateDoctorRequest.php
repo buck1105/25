@@ -24,16 +24,15 @@ class CreateDoctorRequest extends FormRequest
     public function rules()
     {
         return [
-           'name' => 'required',
+            'name' => 'required',
             'phone' => 'required',
-            'role' => 'required',
+            'specialist_id' => 'required',
             'email' => 'required|email',
-            'image' => 'required|image',
+            'image' => 'required',
             'birthdate' => 'required',
             'gender' => 'required',
             'password' => 'required',
             'address' => 'required',
-
         ];
     }
 }
