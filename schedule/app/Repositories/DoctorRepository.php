@@ -46,6 +46,7 @@ class DoctorRepository implements DoctorRepositoryContract
     public function update($id, $data)
     {
         $model = $this->find($id);
+        $data['password']= bcrypt($data['password']);
         return $model->update($data);
     }
 
