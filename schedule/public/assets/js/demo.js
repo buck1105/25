@@ -936,12 +936,12 @@ demo = {
 		});
     },
 
-	showNotification: function(from, align){
+	showNotification: function(from, align, data){
     	color = Math.floor((Math.random() * 4) + 1);
 
     	$.notify({
         	icon: "ti-gift",
-        	message: "Welcome to <b>Paper Dashboard</b> - a beautiful dashboard for every web developer."
+        	message: data
 
         },{
             type: type[color],
