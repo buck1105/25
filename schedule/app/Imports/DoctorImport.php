@@ -14,6 +14,7 @@ class DoctorImport implements ToModel
      */
     public function model(array $row)
     {
+
         return new User([
             'specialist_id' => $row['specialist_id'],
             'name' => $row['name'],
@@ -26,5 +27,6 @@ class DoctorImport implements ToModel
             'address' => $row['address'],
             'role' => $row['role'],
         ]);
+
     }
 }
