@@ -64,6 +64,7 @@
                         <div class="form-group">
                             <label for="">Ảnh </label>
                             <input type="file" name="image" id="image" class="form-control">
+                            <input type="hidden" name="image_old" class="form-control" value="{{$data->image}}">
                             @error('image')
                             {{$message}}
                             @enderror

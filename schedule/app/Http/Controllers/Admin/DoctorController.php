@@ -66,8 +66,20 @@ class DoctorController extends Controller
 
     public function update(Request $request, $id)
     {
+
         $data = $request->all();
-//        $data['image'] = $request->all();
+        if (empty($request->file('image'))) {
+            $data['image'] =  $request->image_old;
+        }
+        else {
+            $img_old = User::query()->where('id', $id)->pluck('image')->first();
+            if (is_file(public_path('assets\img\\'.$img_old))) {
+                unlink(public_path('assets\img\\'.$img_old));
+            }
+            $image = uniqid() . '_' . trim($request->file('image')->getClientOriginalName());
+            $request->file('image')->move(public_path('assets/img'), $image);
+            $data['image'] = $image;
+        }
         $this->repository->update($id, $data);
         return redirect()->route('admin.doctor.index');
     }
@@ -84,6 +96,6 @@ class DoctorController extends Controller
     }
 
     public function exportDoctor() {
-         return Excel::download(new UserExport, 'users.csv');
-    }
+     return Excel::download(new UserExport, 'users.csv');
+ }
 }
