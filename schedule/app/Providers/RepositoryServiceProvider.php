@@ -3,7 +3,7 @@
 namespace App\Providers;
 
 use App\Repositories\DoctorRepository;
-use App\Repositories\DoctorRepositoryContract;
+use App\Interfaces\DoctorInterface;
 use Illuminate\Support\ServiceProvider;
 
 class RepositoryServiceProvider extends ServiceProvider
@@ -15,7 +15,7 @@ class RepositoryServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        $this->app->bind(DoctorRepositoryContract::class, DoctorRepository::class);
+        $this->app->bind(DoctorInterface::class, DoctorRepository::class);
     }
 
     /**

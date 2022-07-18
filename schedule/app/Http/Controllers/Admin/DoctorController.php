@@ -6,11 +6,12 @@ use App\Enums\DoctorSpecialistEnum;
 use App\Enums\UserRoleEnum;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Doctor\CreateDoctorRequest;
-use App\Imports\DoctorImport;
+use App\Imports\UserImport;
 use App\Models\User;
-use App\Repositories\DoctorRepositoryContract;
+use App\Interfaces\DoctorInterface;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use App\Exports\UserExport;
 use Excel;
 
 class DoctorController extends Controller
@@ -18,7 +19,7 @@ class DoctorController extends Controller
 
     protected $repository;
 
-    public function __construct(DoctorRepositoryContract $repository)
+    public function __construct(DoctorInterface $repository)
     {
         $this->repository = $repository;
     }
@@ -74,11 +75,15 @@ class DoctorController extends Controller
     public function import(Request $request)
     {
         try {
-            Excel::import(new DoctorImport(), $request->file);
+            Excel::import(new UserImport(), $request->file('file'));
             return redirect()->route('admin.doctor.index');
         }
         catch(\Exception $e) {
-            return back()->with('msg', 'Import không thành công');
+            return back()->with('msg', 'Import không thành công'. $e->getMessage());
         }
+    }
+
+    public function exportDoctor() {
+         return Excel::download(new UserExport, 'users.csv');
     }
 }

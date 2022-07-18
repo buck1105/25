@@ -1,7 +1,7 @@
 <?php
-namespace App\Repositories;
+namespace App\Interfaces;
 
-interface DoctorRepositoryContract
+interface DoctorInterface
 {
     public function paginate();
     public function find($id);

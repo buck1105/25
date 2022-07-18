@@ -15,18 +15,18 @@ class CreateUsersTable extends Migration
     {
         Schema::create('users', function (Blueprint $table) {
             $table->id();
-            $table->unsignedInteger('specialist_id');
+            $table->bigInteger('specialist_id')->unsigned();
             $table->string('name');
             $table->string('email');
             $table->string('password')->nullable();
             $table->string('image')->nullable();
             $table->string('phone')->nullable();
             $table->date('birthdate')->nullable();
-            $table->boolean('gender')->nullable();
+            $table->boolean('gender')->default(1);
             $table->text('address')->nullable();
             $table->smallInteger('role')->default(3);
             $table->timestamps();
-//            $table->foreignId('specialist_id')->constrained()->cascadeOnDelete();
+            // $table->foreignId('specialist_id')->constrained('specialists')->cascadeOnDelete();
         });
     }
 
@@ -37,6 +37,7 @@ class CreateUsersTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('users');
+        // Schema::dropIfExists('users');
+        $table->dropColumn('specialist_id');
     }
 }

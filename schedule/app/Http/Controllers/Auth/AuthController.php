@@ -26,9 +26,8 @@ class AuthController extends Controller
 
     public function processLogin(LoginRule $request)
     {
-
         try {
-            if (Auth::guard('web')->attempt(['email' => $request->email, 'password' => $request->password, 'role' => 0])) {
+            if (Auth::attempt(['email' => $request->email, 'password' => $request->password, 'role' => 0])) {
                 $user = User::query()->where('email', $request->email)->sole();
                 Session::put('name', $user->name);
                 Session::put('email', $user->email);

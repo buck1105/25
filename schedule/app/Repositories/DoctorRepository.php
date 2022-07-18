@@ -5,10 +5,11 @@ namespace App\Repositories;
 use App\Enums\UserRoleEnum;
 use App\Models\User;
 use App\Traits\ResponseTrait;
+use App\Interfaces\DoctorInterface;
 
 //use Illuminate\Support\Facades\Log;
 
-class DoctorRepository implements DoctorRepositoryContract
+class DoctorRepository implements DoctorInterface
 {
     use ResponseTrait;
 

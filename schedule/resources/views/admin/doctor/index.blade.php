@@ -21,14 +21,15 @@
                         <div class="toolbar wrap">
                             <span><a href="{{route('admin.doctor.create')}}"  class="btn btn-primary"
                                      style="margin-right: 4px">Thêm</a></span>
-                            <span>
-                                <form action="{{route('admin.doctor.import')}}" id="fileSubmit" method="post">
+                            <span style="margin-right: 4px">
+                                <form action="{{route('admin.doctor.import')}}" id="fileSubmit" method="post" enctype="multipart/form-data" >
                                     @csrf
                                     <label for="file" class="btn btn-primary">CSV</label>
                                     <input type="file" id="file" name="file">
                                     <input type="submit" id="fileSubmit1"  value="Submit">
                                </form>
                             </span>
+                            <span ><a href="{{route('admin.doctor.export')}}"  class="btn btn-primary" >DOWNLOAD</a></span>
                         </div>
                         <table id="bootstrap-table" class="table">
                             <thead>

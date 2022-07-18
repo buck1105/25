@@ -19,6 +19,7 @@ Route::group(['middleware' => 'checklogin'], function () {
         Route::post('update/{id}', [DoctorController::class, 'update'])->name('update');
         Route::get('delete/{id}', [DoctorController::class, 'delete'])->name('delete');
         Route::post('import', [DoctorController::class, 'import'])->name('import');
+        Route::get('export', [DoctorController::class, 'exportDoctor'])->name('export');
     });
 
     Route::group(['prefix' => 'calender', 'as' => 'calender.'], function () {
