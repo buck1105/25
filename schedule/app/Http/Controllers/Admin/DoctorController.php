@@ -8,6 +8,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\Doctor\CreateDoctorRequest;
 use App\Imports\UserImport;
 use App\Models\User;
+use App\Models\Specialist;
 use App\Interfaces\DoctorInterface;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -33,7 +34,7 @@ class DoctorController extends Controller
 
     public function create()
     {
-        $specialist = DoctorSpecialistEnum::asArray();
+        $specialist = Specialist::query()->select('id', 'name')->get();
         return view('admin.doctor.create', compact('specialist'));
     }
 
@@ -74,7 +75,7 @@ class DoctorController extends Controller
         else {
             $img_old = User::query()->where('id', $id)->pluck('image')->first();
             if (is_file(public_path('assets\img\\'.$img_old))) {
-                unlink(public_path('assets\img\\'.$img_old));
+                @unlink(public_path('assets\img\\'.$img_old));
             }
             $image = uniqid() . '_' . trim($request->file('image')->getClientOriginalName());
             $request->file('image')->move(public_path('assets/img'), $image);
@@ -96,6 +97,6 @@ class DoctorController extends Controller
     }
 
     public function exportDoctor() {
-     return Excel::download(new UserExport, 'users.csv');
- }
+       return Excel::download(new UserExport, 'users.csv');
+   }
 }

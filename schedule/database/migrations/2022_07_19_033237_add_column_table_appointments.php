@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateSpecialistsTable extends Migration
+class AddColumnTableAppointments extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,8 @@ class CreateSpecialistsTable extends Migration
      */
     public function up()
     {
-        Schema::create('specialists', function (Blueprint $table) {
-            $table->id();
-            $table->string('name');
-            $table->longText('description');
-            $table->timestamps();
+        Schema::table('appointments', function (Blueprint $table) {
+             $table->datetime('finish_time')->after('start_time');
         });
     }
 
@@ -28,6 +25,8 @@ class CreateSpecialistsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('specialists');
+        Schema::table('appointments', function (Blueprint $table) {
+            //
+        });
     }
 }

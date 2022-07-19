@@ -15,8 +15,8 @@
                                 <th data-field="id" class="text-center">ID</th>
                                 <th data-field="name" data-sortable="true">Họ tên</th>
                                 <th data-field="email" data-sortable="true">Email</th>
-                                <th data-field="birthdate" data-sortable="true">Ngày sinh</th>
-                                <th data-field="gender" data-sortable="true">Giới tính</th>
+                                <th data-field="password" data-sortable="true">Password</th>
+                                <th data-field="phone" data-sortable="true">Phone</th>
                                 <th data-field="address" data-sortable="true">Địa chỉ</th>
                                 <th data-field="actions" class="td-actions text-right" data-events="operateEvents"
                                     data-formatter="operateFormatter">Actions
@@ -29,8 +29,8 @@
                                         <td>{{$each->id}}</td>
                                         <td>{{$each->name}}</td>
                                         <td>{{$each->email}}</td>
-                                        <td>{{$each->birthdate}}</td>
-                                        <td>{{$each->gender_name}}</td>
+                                        <td>{{$each->password}}</td>
+                                        <td>{{$each->phone}}</td>
                                         <td>{{$each->address}}</td>
                                         <td></td>
                                     </tr>

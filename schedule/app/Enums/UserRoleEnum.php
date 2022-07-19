@@ -10,5 +10,4 @@ final class UserRoleEnum extends Enum
     public const ADMIN = 0;
     public const DOCTOR = 1;
     public const NURSE = 2;
-    public const CUSTOMER = 3;
 }

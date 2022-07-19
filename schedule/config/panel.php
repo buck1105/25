@@ -6,5 +6,6 @@ return [
     'available_languages' => [
         'en' => 'English',
         'vi' => 'Vietnam',
+        'ja' => 'Japan',
     ],
 ];

@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Admin\DoctorController;
 use App\Http\Controllers\Admin\SpecialistController;
+use App\Http\Controllers\Admin\ClientController;
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Auth\AuthController;
 use Illuminate\Support\Facades\Route;
@@ -29,11 +30,20 @@ Route::group(['middleware' => 'checklogin'], function () {
     });
 
     Route::group(['prefix' => 'user', 'as' => 'user.'], function () {
-        Route::get('/', [UserController::class, 'index'])->name('index');
+
+    });
+
+    Route::group(['prefix' => 'client', 'as' => 'client.'], function () {
+Route::get('/', [ClientController::class, 'index'])->name('index');
     });
 
     Route::group(['prefix' => 'specialist', 'as' => 'specialist.'], function () {
         Route::get('/', [SpecialistController::class, 'index'])->name('index');
+        Route::get('/create', [SpecialistController::class, 'create'])->name('create');
+        Route::post('/store', [SpecialistController::class, 'store'])->name('store');
+        Route::get('/edit/{id}', [SpecialistController::class, 'edit'])->name('edit');
+        Route::post('/update', [SpecialistController::class, 'update'])->name('update');
+        Route::get('delete/{id}', [SpecialistController::class, 'destroy'])->name('destroy');
     });
 
     Route::get('logout', [AuthController::class, 'logout'])->name('logout');

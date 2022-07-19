@@ -14,17 +14,17 @@ class UserImport implements ToModel
     */
     public function model(array $row)
     {
+
         return new User([
             'specialist_id' => $row[1],
             'name' => $row[2],
             'email' => $row[3],
-            'password' => $row[4],
-            'image' => $row[5],
-            'phone' => $row[6],
-            'birthdate' => (!empty($row[7])) ? $row[7] : now(),
-            'gender' => (!empty($row[8])) ? $row[8] : 1,
-            'address' => $row[9],
-            'role' => $row[10],
+            'image' => $row[4],
+            'phone' => $row[5],
+            'birthdate' => (!empty($row[6])) ? $row[6] : now(),
+            'gender' => (!empty($row[7])) ? $row[7] : 1,
+            'address' => (!empty($row[8])) ? $row[8] : 'Ha Noi',
+            'role' => 1,
         ]);
 
 

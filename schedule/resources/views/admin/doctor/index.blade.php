@@ -29,7 +29,7 @@
                                     <input type="submit" id="fileSubmit1"  value="Submit">
                                </form>
                             </span>
-                            <span ><a href="{{route('admin.doctor.export')}}"  class="btn btn-primary" >DOWNLOAD</a></span>
+                            <span ><a href="{{route('admin.doctor.export')}}" style="margin-right: 4px" class="btn btn-primary" >DOWNLOAD</a></span>
                         </div>
                         <table id="bootstrap-table" class="table">
                             <thead>
@@ -42,7 +42,7 @@
                             <th data-field="birthdate" data-sortable="true">Ngày sinh</th>
                             <th data-field="gender" data-sortable="true">Giới tính</th>
                             <th data-field="address" data-sortable="true">Địa chỉ</th>
-                            <th data-field="actions" class="td-actions text-right" data-events="operateEvents"
+                            <th data-field="actions" class="td-actions" data-events="operateEvents"
                                 data-formatter="operateFormatter">Actions
                             </th>
                             </thead>
@@ -66,7 +66,7 @@
                                                href="{{route('admin.doctor.edit', $each->id)}}">
                                                 <i class="ti-pencil-alt"></i>
                                             </a>
-                                            <a rel="tooltip" title="Remove"
+                                            <a rel="tooltip" title="Remove" onclick="return confirm('Bạn có chắc xóa record này không')"
                                                class="btn btn-simple btn-danger btn-icon table-action remove"
                                                href="{{route('admin.doctor.delete', $each->id)}}">
                                                 <i class="ti-close"></i>
@@ -110,5 +110,11 @@
         //         });
         //     }
         // );
+
     </script>
+
+
 @endpush
+
+
+

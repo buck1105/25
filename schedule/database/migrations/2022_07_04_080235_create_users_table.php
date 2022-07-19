@@ -24,9 +24,9 @@ class CreateUsersTable extends Migration
             $table->date('birthdate')->nullable();
             $table->boolean('gender')->default(1);
             $table->text('address')->nullable();
-            $table->smallInteger('role')->default(3);
+            $table->smallInteger('role')->default(2);
             $table->timestamps();
-            // $table->foreignId('specialist_id')->constrained('specialists')->cascadeOnDelete();
+            $table->foreign('specialist_id')->references('id')->on('specialists')->onDelete('cascade');
         });
     }
 
@@ -37,7 +37,6 @@ class CreateUsersTable extends Migration
      */
     public function down()
     {
-        // Schema::dropIfExists('users');
-        $table->dropColumn('specialist_id');
+        Schema::dropIfExists('users');
     }
 }
