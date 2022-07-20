@@ -22,19 +22,26 @@ class DoctorController extends Controller
 
     public function __construct(DoctorInterface $repository)
     {
+
         $this->repository = $repository;
     }
 
     public function index()
     {
         $data = $this->repository->paginate();
-//        $data = User::query()->where('role', UserRoleEnum::DOCTOR)->paginate(8);
         return view('admin.doctor.index', compact('data'));
     }
 
     public function create()
     {
-        $specialist = Specialist::query()->select('id', 'name')->get();
+        // $specialist = User::with(['specialist' => function($query) {
+        //     $query->where('id', 2);
+        // }])->get();
+
+         // foreach ($specialist as $value) {
+        //      dd(data_get($value, 'id'));
+        // }
+        $specialist = User::with('specialist')->get();
         return view('admin.doctor.create', compact('specialist'));
     }
 
@@ -99,4 +106,19 @@ class DoctorController extends Controller
     public function exportDoctor() {
        return Excel::download(new UserExport, 'users.csv');
    }
+
+
+    public static function splitString($data, $numChar)
+    {
+    $content = self::processString($data->content);
+    $result = [];
+    $length = mb_strlen($content, 'UTF-8');
+    $length = $length - ($length % $numChar);
+    for ($i = 0; $i < $length; $i += $numChar) {
+        $char = mb_substr($content, $i, $numChar, 'UTF-8');
+        $result[] = $char;
+    }
+
+    return $result;
+    }
 }

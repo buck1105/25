@@ -7,6 +7,8 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
+use App\Models\Specialist;
+
 
 class User extends Authenticatable
 {
@@ -58,14 +60,15 @@ class User extends Authenticatable
         return "Nữ";
     }
 
-    public function getSpecialistNameAttribute()
-    {
-        if ($this->specialist_id == 0) {
-            return "Đa khoa";
-        }
-        elseif ($this->specialist_id==1){
-            return "Nha khoa";
-        }
-        return "Ung bướu";
-    }
+
+   /**
+    * User has one Specialist.
+    *
+    * @return \Illuminate\Database\Eloquent\Relations\HasOne
+    */
+   public function specialist()
+   {
+       // hasOne(RelatedModel, foreignKeyOnRelatedModel = user_id, localKey = id)
+       return $this->belongsTo(Specialist::class, 'specialist_id', 'id');
+   }
 }

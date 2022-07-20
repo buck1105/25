@@ -10,16 +10,21 @@ use App\Models\Specialist;
 
 class SpecialistController extends Controller
 {
+
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $data  = Specialist::query()->select('id', 'name', 'description')->orderBy('id', 'asc')->get();
-        return view('admin.specialist.index', compact('data'));
-    }
+    //   if($request->has('search')){
+    //     $data = Specialist::search($request->get('search'))->get();
+    // }else{
+       $data  = Specialist::query()->get();
+   // }
+   return view('admin.specialist.index', compact('data'));
+}
 
     /**
      * Show the form for creating a new resource.
@@ -108,4 +113,7 @@ class SpecialistController extends Controller
         Specialist::destroy($id);
         return redirect()->route('admin.specialist.index');
     }
+
+
+
 }

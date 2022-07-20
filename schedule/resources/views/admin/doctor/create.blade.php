@@ -44,7 +44,7 @@
                                 <label for="">Chuyên khoa </label>
                                 <select name="specialist_id" id="" class="form-control">
                                     @foreach($specialist as $key => $value)
-                                        <option value="{{$value->id}}">{{$value->name}}</option>
+                                        <option value="{{$value->id}}">{{optional($value->specialist)->name}}</option>
                                     @endforeach
                                 </select>
                                 @error('specialist_id')
