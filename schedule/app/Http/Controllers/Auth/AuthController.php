@@ -27,7 +27,7 @@ class AuthController extends Controller
     public function processLogin(LoginRule $request)
     {
         try {
-            if (Auth::attempt(['email' => $request->email, 'password' => $request->password, 'role' => 0])) {
+            if (Auth::attempt(['email' => trim($request->email), 'password' => trim($request->password), 'role' => [0, 1, 2]])) {
                 $user = User::query()->where('email', $request->email)->sole();
                 Session::put('name', $user->name);
                 Session::put('email', $user->email);
@@ -49,7 +49,7 @@ class AuthController extends Controller
             $user = new User();
             $user->name = $request->name;
             $user->email = $request->email;
-            $user->password = Hash::make($request->password);
+            $user->password = trim(Hash::make($request->password));
             $user->save();
 //            DB::commit();
             return redirect()->route('login');

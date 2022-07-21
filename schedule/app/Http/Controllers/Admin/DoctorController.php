@@ -22,6 +22,7 @@ class DoctorController extends Controller
 
     public function __construct(DoctorInterface $repository)
     {
+        // dd(userAdmin());
 
         $this->repository = $repository;
     }

@@ -22,7 +22,7 @@ class DoctorRepository implements DoctorInterface
 
     public function paginate()
     {
-        return $this->model->where('role', UserRoleEnum::DOCTOR)->paginate(8);
+        return $this->model->where('role', UserRoleEnum::DOCTOR)->orWhere('role', UserRoleEnum::NURSE)->paginate(8);
     }
 
     public function find($id)
@@ -36,7 +36,6 @@ class DoctorRepository implements DoctorInterface
             $image = uniqid() . '_' . trim($data['image']->getClientOriginalName());
             $data['image']->move(public_path('assets/img'), $image);
             $data['image'] = $image;
-            $data['role'] = 1;
             $data['password'] = bcrypt($data['password']);
             return $this->model->insert($data);
         } catch (\Exception $e) {
