@@ -22,7 +22,7 @@ class DoctorRepository implements DoctorInterface
 
     public function paginate()
     {
-        return $this->model->where('role', UserRoleEnum::DOCTOR)->orWhere('role', UserRoleEnum::NURSE)->paginate(8);
+        return $this->model->where('role', UserRoleEnum::DOCTOR)->orWhere('role', UserRoleEnum::NURSE)->with('specialist')->paginate(8);
     }
 
     public function find($id)

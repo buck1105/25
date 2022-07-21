@@ -31,7 +31,7 @@ class AuthController extends Controller
                 $user = User::query()->where('email', $request->email)->sole();
                 Session::put('name', $user->name);
                 Session::put('email', $user->email);
-                Session::put('avatar', $user->avatar);
+                Session::put('avatar', $user->image);
                 return redirect()->route('admin.dashboard');
             }
         } catch (\Exception $e) {

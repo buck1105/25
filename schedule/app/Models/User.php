@@ -60,6 +60,13 @@ class User extends Authenticatable
         }
         return "Nữ";
     }
+ public function getRoleNameAttribute()
+    {
+        if ($this->role == 1) {
+            return "Bác sĩ";
+        }
+        return "Y tá";
+    }
 
 
    /**

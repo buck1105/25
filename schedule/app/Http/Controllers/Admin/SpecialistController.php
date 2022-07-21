@@ -21,7 +21,7 @@ class SpecialistController extends Controller
     //   if($request->has('search')){
     //     $data = Specialist::search($request->get('search'))->get();
     // }else{
-       $data  = Specialist::query()->get();
+       $data  = Specialist::query()->paginate(4);
    // }
    return view('admin.specialist.index', compact('data'));
 }

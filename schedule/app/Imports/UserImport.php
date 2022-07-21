@@ -14,19 +14,24 @@ class UserImport implements ToModel
     */
     public function model(array $row)
     {
-
+        // dd(date('Y/m/d', strtotime($row[6])));
         return new User([
-            'specialist_id' => $row[1],
-            'name' => $row[2],
-            'email' => $row[3],
-            'image' => $row[4],
-            'phone' => $row[5],
-            'birthdate' => (!empty($row[6])) ? $row[6] : now(),
-            'gender' => (!empty($row[7])) ? $row[7] : 1,
-            'address' => (!empty($row[8])) ? $row[8] : 'Ha Noi',
+            'specialist_id' => $row[2],
+            'name' => $row[3],
+            'email' => $row[4],
+            'image' => $row[5],
+            'phone' => $row[6],
+            'birthdate' => (!empty($row[7])) ? date('Y/m/d', strtotime($row[7])) : now(),
+            'gender' => (!empty($row[8])) ? $row[8] : 1,
+            'address' => (!empty($row[9])) ? $row[9] : 'Ha Noi',
             'role' => 1,
         ]);
 
 
     }
+
+    public function batchSize(): int { return 100; }
 }
+
+
+// specialist_id`, `name`, `email`, `image`, `phone`, `birthdate`, `gender`, `address`, `role`, `updated_at`, `created_at

@@ -22,8 +22,8 @@
                     @can('addCsvDownload', auth()->user())
                     <div class="toolbar wrap">
                         <span><a href="{{route('admin.doctor.create')}}"  class="btn btn-primary"
-                           style="margin-right: 4px">Thêm</a></span>
-                           <span style="margin-right: 4px">
+                         style="margin-right: 4px">Thêm</a></span>
+                         <span style="margin-right: 4px">
                             <form action="{{route('admin.doctor.import')}}" id="fileSubmit" method="post" enctype="multipart/form-data" >
                                 @csrf
                                 <label for="file" class="btn btn-primary">CSV</label>
@@ -42,6 +42,7 @@
                             <th data-field="name" data-sortable="true">Họ tên</th>
                             <th data-field="avatar" data-sortable="true">Ảnh</th>
                             <th data-field="specialist" data-sortable="true">Chuyên khoa</th>
+                            <th data-field="specialist" data-sortable="true">Chuyên ngành</th>
                             <th data-field="email" data-sortable="true">Email</th>
                             <th data-field="birthdate" data-sortable="true">Ngày sinh</th>
                             <th data-field="gender" data-sortable="true">Giới tính</th>
@@ -59,13 +60,14 @@
                             <td>{{$each->id}}</td>
                             <td>{{$each->name}}</td>
                             <td><img src="{{asset('assets/img/').'/'.$each->image}}"
-                               style="max-width: 45px;max-height: 65px" alt=""></td>
-                               <td>{{$each->specialist_name}}</td>
-                               <td>{{$each->email}}</td>
-                               <td>{{$each->birthdate}}</td>
-                               <td>{{$each->gender_name}}</td>
-                               <td>{{$each->address}}</td>
-                               <td>
+                             style="max-width: 45px;max-height: 65px" alt=""></td>
+                             <td>{{$each->specialist->name}}</td>
+                             <td>{{$each->role_name}}</td>
+                             <td>{{$each->email}}</td>
+                             <td>{{$each->birthdate}}</td>
+                             <td>{{$each->gender_name}}</td>
+                             <td>{{$each->address}}</td>
+                             <td>
                                 <div class="table-icons">
                                     @can('update', auth()->user())
                                     <a rel="tooltip" title="Edit"
@@ -84,17 +86,32 @@
                         </div>
                     </td>
                 </tr>
+
                 @endforeach
+                <tr span="9">
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td>
+                        <div class="fixed-table-pagination" style="margin-bottom:0; ">
+                            <div class="pull-right pagination ">
+                                <ul class="pagination">
+                                    {{$data->links()}}
+                                </ul>
+                            </div>
+                        </div>
+                    </td>
+                </tr>
             </tbody>
         </table>
-        {{--                            <div class="fixed-table-pagination">--}}
 
-            {{--                                <div class="pull-right pagination">--}}
-                {{--                                    <ul class="pagination">--}}
-                    {{--                                        {{$data->links()}}--}}
-                {{--                                    </ul>--}}
-            {{--                                </div>--}}
-        {{--                            </div>--}}
     </div>
 </div><!--  end card  -->
 </div> <!-- end col-md-12 -->

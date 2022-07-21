@@ -1,7 +1,7 @@
 <div class="sidebar" data-background-color="brown" data-active-color="danger">
     <div class="logo">
-        <a href="#" class="simple-text logo-mini">
-            CA
+        <a href="#" class="simple-text logo-mini" >
+            IT
         </a>
         <a href="#" class="simple-text logo-normal">
             Customer Care
@@ -11,11 +11,10 @@
         <div class="user">
             <div class="info">
                 <div class="photo">
-                    <img src="{{asset('assets/img/faces/face-2.jpg')}}" />
-                    {{--                    <img src="{{session()->get('avatar')}}" />--}}
+                    <img src="{{asset('assets/img/').'/'.session()->get('avatar')}}" />
                 </div>
                 <a data-toggle="collapse" href="#collapseExample" class="collapsed">
-                   <span>
+                 <span>
                     @if(session()->has('name'))
                     {{session()->get('name')}}
                     @endif
@@ -77,10 +76,10 @@
             <a  href="{{route('admin.client.index')}}">
                 <i class="ti-user"></i>
                 <p>
-                 Customer
-             </p>
-         </a>
-     </li>
- </ul>
+                   Customer
+               </p>
+           </a>
+       </li>
+   </ul>
 </div>
 </div>
