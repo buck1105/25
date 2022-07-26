@@ -9,6 +9,7 @@ use Maatwebsite\Excel\Concerns\ShouldAutoSize;
 use Maatwebsite\Excel\Concerns\WithColumnWidths;
 use Maatwebsite\Excel\Concerns\WithStyles;
 use PhpOffice\PhpSpreadsheet\Worksheet\Worksheet;
+// use Maatwebsite\Excel\Concerns\View;
 
 class UserExport implements FromCollection,  WithHeadings, WithStyles, ShouldAutoSize
 {

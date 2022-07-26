@@ -22,13 +22,12 @@ class DoctorController extends Controller
 
     public function __construct(DoctorInterface $repository)
     {
-        // dd(userAdmin());
-
         $this->repository = $repository;
     }
 
-    public function index()
+    public function index(Request $request)
     {
+        dd($request->route()->name('doctor.index'));
         $data = $this->repository->paginate();
         return view('admin.doctor.index', compact('data'));
     }
@@ -81,7 +80,8 @@ class DoctorController extends Controller
             $data['image'] =  $request->image_old;
         }
         else {
-            $img_old = User::query()->where('id', $id)->pluck('image')->first();
+            // $img_old = User::query()->where('id', $id)->pluck('image')->first();
+            $img_old = User::query()->where('id', $id)->value('image');
             if (is_file(public_path('assets\img\\'.$img_old))) {
                 @unlink(public_path('assets\img\\'.$img_old));
             }

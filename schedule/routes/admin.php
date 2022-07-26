@@ -34,7 +34,7 @@ Route::group(['middleware' => 'checklogin'], function () {
     });
 
     Route::group(['prefix' => 'client', 'as' => 'client.'], function () {
-Route::get('/', [ClientController::class, 'index'])->name('index');
+        Route::get('/', [ClientController::class, 'index'])->name('index');
     });
 
     Route::group(['prefix' => 'specialist', 'as' => 'specialist.'], function () {
