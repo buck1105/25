@@ -6,11 +6,15 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\Auth\LoginRule;
 use App\Http\Requests\Auth\RegisterRule;
 use App\Models\User;
+use App\Mail\SendMailRegister;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Session;
+use Socialite;
+use Mail;
+use App\Jobs\SendEmail;
 
 class AuthController extends Controller
 {
@@ -67,4 +71,39 @@ class AuthController extends Controller
         Auth::logout();
         return redirect()->route('login');
     }
+
+    public function callback($provider)
+    {
+        if (!empty($provider) && $provider == 'google') {
+            try {
+                $user = new User();
+                $google = Socialite::driver($provider)->user();
+                $user['specialist_id'] = 2;
+                // $user['id'] = $google['id'];
+                $user['name'] = $google['name'];
+                $user['email'] = $google['email'];
+                $user['password'] ='$2a$12$1nfzJZp4q2xS7XB6u8TirOcMLKZw1jlaIRG184MZQCaRCiiNeujGm';
+                $user['role'] = 3;
+                $user->save();
+                // Mail::to($user['email'])->send(new SendMailRegister($user));
+                dispatch(new SendEmail($user));
+                return redirect()->route('login');
+
+            } catch (Exception $e) {
+              return back()->with(['msg' => 'Roor']);
+          }
+      }
+      elseif (!empty($provider) && $provider == 'github') {
+        $github = Socialite::driver($provider)->user();
+            // $user['id'] = $github['id'];
+            // $user['name'] = $github['name'];
+            // $user['email'] = $github['email'];
+        dd($github);
+    } 
+    else{
+        // $instagram = Socialite::driver($provider)->user();
+        // dd($instagram);
+        dd(1);
+    }
+}
 }

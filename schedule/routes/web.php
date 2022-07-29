@@ -20,6 +20,14 @@ Route::get('/', function () {
 
 Route::get('login', [AuthController::class, 'login'])->name('login');
 Route::post('login', [AuthController::class, 'processLogin'])->name('process.login');
+Route::get('/auth/redirect/{provider}', function ($provider) {
+    return Socialite::driver($provider)->redirect();
+})->name('auth.redirect');
+Route::get('/auth/callback/{provider}',[AuthController::class, 'callback'])->name('auth.callback');
+// Route::get('test',function() {
+//     Socialite::driver('instagram')->redirect();
+// });
+
 Route::get('register', [AuthController::class, 'register'])->name('register');
 Route::post('register', [AuthController::class, 'processRegister'])->name('process.register');
 Route::get('ngonngu/{lang?}', function ($lang) {
